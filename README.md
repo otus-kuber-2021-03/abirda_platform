@@ -42,5 +42,5 @@
 1. Поднял StatefulSet с помощью манифеста minio-statefulset.yaml
 2. Поднял Service с помощью minio-headless-service.yaml
 3. Сделал коммит
-4. Создал Secret (minio-statefulset-secret.yaml), в который занес перобразованные в base64 значения переменных окружения MINIO_ACCESS_KEY и MINIO_SECRET_KEY из манифеста minio-statefulset.yaml
-5. Изменил minio-statefulset.yaml таким образом, чтобы значения переменных окружения MINIO_ACCESS_KEY и MINIO_SECRET_KEY брались из секрета
+4. Создал Secret (minio-statefulset-secret.yaml), в который занес преобразованные в base64 значения переменных окружения MINIO_ACCESS_KEY и MINIO_SECRET_KEY из манифеста minio-statefulset.yaml *
+5. Изменил minio-statefulset.yaml таким образом, чтобы значения переменных окружения MINIO_ACCESS_KEY и MINIO_SECRET_KEY брались из секрета *
