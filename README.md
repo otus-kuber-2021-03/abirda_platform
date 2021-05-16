@@ -34,6 +34,6 @@
     * Назначил созданную роль на группу system:serviceaccounts:prometheus
 3. Задача 3
     * Создал ns dev
-    * В этом неймспейсе создал пользоватлей jane и ken
+    * В этом неймспейсе создал пользователей jane и ken
     * С помощью манифеста RoleBinding назначил jane кластерную роль admin в ns dev
     * С помощью манифеста RoleBinding назначил ken кластерную роль view в ns dev
