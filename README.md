@@ -44,3 +44,15 @@
 3. Сделал коммит
 4. Создал Secret (minio-statefulset-secret.yaml), в который занес преобразованные в base64 значения переменных окружения MINIO_ACCESS_KEY и MINIO_SECRET_KEY из манифеста minio-statefulset.yaml *
 5. Изменил minio-statefulset.yaml таким образом, чтобы значения переменных окружения MINIO_ACCESS_KEY и MINIO_SECRET_KEY брались из секрета *
+
+# Задание 5. Что сделал
+1. Создал Deployment web приложения с livenessProbe и readinessProbe
+2. Создал сервис для web подов типа ClusterIP
+3. Перевел kube-proxy в режим работы ipvs
+4. Установил и настроил MetalLB
+5. Создал сервис для web подов типа LoadBalancer
+6. Создал сервис типа LoadBalancer, открывающий доступ к CoreDNS *
+7. Установил и сконфигурировал ingress-nginx
+8. Создал headless-сервис для web подов и объект ingress для балансировки на этот сервис по пути /web/
+9. Создал объект ingress для балансировки по пути /dashboard/ на сервис kubernetes-dashboard. kubernetes-dashboard предварительно был развернут из манифеста https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml *
+
