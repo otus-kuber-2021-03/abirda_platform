@@ -56,3 +56,33 @@
 8. Создал headless-сервис для web подов и объект ingress для балансировки на этот сервис по пути /web/
 9. Создал объект ingress для балансировки по пути /dashboard/ на сервис kubernetes-dashboard. kubernetes-dashboard предварительно был развернут из манифеста https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml *
 
+# Задание 6. Что сделал
+1. Зарегистрировался на GCP. Получил облако
+2. Создал кластер kubernetes с помощью инстурмента gcloud
+3. Установил helm 3 и сконфигурировал репозитории
+4. Установил на кластер k8s nginx-ingress
+5. Установил на кластер k8s cert-manager. Создал ClusterIssuer
+6. Установил на кластер k8s chartmuseum с кастомизированным values.yaml. Убедился, что сервис работает зайдя на https://chartmuseum.34.88.81.253.nip.io
+7. Установил на кластер k8s harbor с кастомизированным values.yaml (дополнительно отключил notary). Проверил, что harbor работает, залогинившись под дефолтными учетными данными на https://harbor.34.88.81.253.nip.io/
+8. Создал helm chart hipster-shop
+9. Выделил из hipster-shop сервис frontend. Разделил описатели на отдельные файлы шаблонов. Создал values.yaml, в котором перечислил настраиваемые свойства шаблонов. Добавил frontend в зависимости к hipster-shop
+10. Выделил из hipster-shop два сервиса paymentservice и shippingservice в kubecfg. Создал services.jsonnet
+11. Выделил из hipster-shop сервис adservice в kustomize. Создал kustomization.yaml для окружения hipster-shop и hipster-shop-prod
+
+## chartmuseum | Задание со *
+Загрузить chart можно с помощью выполнения http запросов к chartmuseum, например, с помощью curl
+```
+curl --data-binary "@mychart-0.1.0.tgz" {CHARTMUSEUM_BASE_URL}/api/charts
+```
+либо использовать helm-push plugin:
+```
+helm push mychart/ chartmuseum
+```
+Для использования chartmuseum в качестве репозитория чартов необходимо добавить его в список репозиториев:
+```
+helm repo add chartmuseum {CHARTMUSEUM_BASE_URL}
+```
+Для установки чартов из chartmuseum:
+```
+helm install chartmuseum/mychart --generate-name
+```
